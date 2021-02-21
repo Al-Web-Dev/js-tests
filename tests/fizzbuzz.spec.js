@@ -5,7 +5,28 @@ describe("FizzBuzz: ", function () {
 
         // e.g. [0, 1, 2, "Fizz", 4, "Buzz", ...]
 
-        let results = [];
+        function fizzBuzz(n) {
+            let results = [];
+          if (n === 0) {
+            return ['0']; // !
+          } else {
+            if (n % 3 === 0 && n % 5 === 0) {
+              results.push('FizzBuzz');
+            } else if (n % 5 === 0) {
+              results.push('Buzz');
+            } else if (n % 3 === 0) {
+              results.push('Fizz');
+            } else {
+              results.push(''+ n);
+            }
+            return fizzBuzz(n - 1).concat(results);
+          }
+        };
+        
+        let results = fizzBuzz(100);
+
+        return results[1],(results[3]),(results[10]),(results[30]),(results[52]);
+        
 
         expect(results[1]).toBe(1);
         expect(results[3]).toBe("Fizz");
